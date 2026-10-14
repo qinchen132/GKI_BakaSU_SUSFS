@@ -1531,6 +1531,13 @@ jobs:
             fi
           fi
 
+      - name: Update SUSFS to latest simonpunk
+        run: |
+           cd KernelSU
+           git remote add simonpunk https://gitlab.com/simonpunk/susfs4ksu.git || true
+           git fetch simonpunk
+           git checkout simonpunk/gki-android14-6.1
+           cd ..
       # ==================== 编译普通内核 ====================
       # 使用重试机制编译普通内核，超时后自动重试
       - name: 构建普通内核
